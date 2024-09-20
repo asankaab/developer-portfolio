@@ -5,46 +5,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { client } from "@/utils/sanity/client"
 
 export default function Navbar() {
 
     const [navItems, setNavItems] = useState([])
 
-    async function getContent() {
-        const CONTENT_QUERY = `*[_type == "project"] {
-        ...,
-        coverImage {
-          ...,
-          asset->
-        },
-        duration {
-          ...
-        },
-        tags[],
-        body
-      }
-      `
-        const content = await client.fetch(CONTENT_QUERY)
-        setNavItems(content);
-      }
+    // async function getContent() {
 
-    const [toggle, setToggle] = useState("-top-[70vh]");
+    //     const CONTENT_QUERY = `*[_type == "nav"] { title, path }`
+
+    //     const content = await client.fetch(CONTENT_QUERY)
+    //     setNavItems(content);
+    // }
+
+    const [toggle, setToggle] = useState("-top-[50vh]");
 
     function menuTrigger() {
-        if (toggle === "-top-[70vh]") {
-            setToggle("top-12");
+        if (toggle === "-top-[50vh]") {
+            setToggle("top-14");
         } else {
-            setToggle("-top-[70vh]");
+            setToggle("-top-[50vh]");
         }
     }
 
     return (
-        <div className="container border-b md:border-b-0 mx-auto py-3 bg-background z-50">
-            <div className=" flex justify-between items-center px-3">
+        <div className="bg-background z-50 fixed w-full">
+            <div className="container mx-auto py-3 flex justify-between items-center px-3 border-b md:border-b-0">
                 <Menu onClick={menuTrigger} className="cursor-pointer md:hidden"/>
-                <nav className="hidden left-0 w-full bg-background transition-all duration-700">
-                    <ul className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
+                <nav className="hidden md:block left-0 w-full bg-background transition-all duration-700">
+                    <ul className="flex gap-4">
                         <Link className="py-3 text-secondary hover:text-black" href="/" >Home</Link>
                         <Link className="py-3 text-secondary hover:text-black" href="/" >Work</Link>
                         <Link className="py-3 text-secondary hover:text-black" href="/" >About</Link>
@@ -59,7 +48,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-            <nav className={"md:hidden left-0 w-full bg-background transition-all duration-700" + " " + toggle}>
+            <nav className={"md:hidden w-full bg-background transition-all duration-700 absolute" + " " + toggle}>
                     <ul className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
                         <Link className="py-3 text-secondary hover:text-black" href="/" >Home</Link>
                         <Link className="py-3 text-secondary hover:text-black" href="/" >Work</Link>

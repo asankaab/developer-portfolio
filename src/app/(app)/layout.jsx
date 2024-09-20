@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={albertSans.className} >
+        className={albertSans.className + ' bg-background'} >
         <Navbar/>
-        <div className="container w-full mx-auto px-3 pt-12 bg-background">
+        <div className="container w-full mx-auto px-3 pt-16">
           {children}
         </div>
       </body>
