@@ -1,5 +1,8 @@
 import { navType } from "./navType";
+import { projectType } from "./projectType";
+import { testimonialType } from "./testimonialType";
+import { userType } from "./userType";
 
 export const schema = {
-  types: [navType],
+  types: [ projectType, testimonialType, userType],
 }
