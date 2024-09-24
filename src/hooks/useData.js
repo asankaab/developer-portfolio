@@ -1,19 +1,30 @@
 import { client } from "@/sanity/lib/client";
 
-export async function getProjectList() {
+export async function getUser() {
 
-    const query = `*[_type == "projects"]{title, slug, images, date, _id}`;
+    const query = `*[_type == "users" && admin]{name, photo, occupation, slogan, experience, email, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 
-    const cardData = await client.fetch(query, {}, options ).then((data) => data);
+    const user = await client.fetch(query, {}, options ).then((data) => data);
 
-    return cardData;
+    return user;
+}
+
+export async function getProjectList(limit) {
+
+    const query = `*[_type == "projects"]{title, slug, images, date, _id}[0...${limit || 20}]`;
+
+    const options = { next: { revalidate: 60 } };
+
+    const projectList = await client.fetch(query, {}, options ).then((data) => data);
+
+    return projectList;
 }
 
 export async function getProject(slug) {
 
-    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date}[0]`;
+    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 

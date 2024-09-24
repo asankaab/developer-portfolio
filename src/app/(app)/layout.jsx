@@ -8,7 +8,7 @@ const albertSans = Albert_Sans({
 });
 
 export const metadata = {
-  title: "Asanka",
+  title: "Asanka | Web Developer",
   description: "asanker.com",
 };
 

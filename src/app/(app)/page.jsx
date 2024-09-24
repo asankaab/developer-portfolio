@@ -6,12 +6,14 @@ import Link from "next/link";
 import { NavList } from "@/components/NavList";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { client } from "@/sanity/lib/client";
-import { getProjectList, getTestimonials } from "@/hooks/useData";
+import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
 import Footer from "@/components/Footer";
+import { urlFor } from "@/sanity/lib/image";
 
 export default async function Home() {
 
-  const cardData = await getProjectList();
+  const user = await getUser();
+  const projectList = await getProjectList(9);
   const testimonials = await getTestimonials();
 
   return (
@@ -21,16 +23,16 @@ export default async function Home() {
         <div className="md:w-1/2 grid items-center">
           <div className="flex gap-2 w-3/4">
             <Avatar>
-              <AvatarImage src="./avatar.png" />
-              <AvatarFallback>AS</AvatarFallback>
+              <AvatarImage src={urlFor(user.photo).width(300).url()} />
+              <AvatarFallback>A</AvatarFallback>
             </Avatar>
-            <h1 className="text-4xl md:text-5xl col-span-3">Hello! I&apos;m Asanka Abewickrama</h1>
+            <h1 className="text-4xl md:text-5xl col-span-3">Hello! I&apos;m {user.name}</h1>
           </div>
         </div>
         <div className="md:w-1/2 grid items-center">
           <div className="grid gap-2">
-            <h2 className="text-2xl md:text-3xl">A web designer/developer and graphic designer</h2>
-            <p>Passionate create and develop great experiences.</p>
+            <h2 className="text-2xl md:text-3xl">{user.occupation}</h2>
+            <p>{user.slogan}</p>
             <div className="flex gap-2">
               <Link href="/work"><Button>See Work</Button></Link>
               <Link href="/contact"><Button variant="outline">Contact</Button></Link>
@@ -41,21 +43,21 @@ export default async function Home() {
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
-        <section className="py-6 md:py-10 grid grid-cols-12">
-          <div className=" flex flex-wrap col-span-12 md:col-span-4">
-            <div className="grid items-center">
-              <div className="grid gap-2">
-                <h2 className="text-2xl md:text-2xl">Working Experience</h2>
-                <p>Freelance graphic designer</p>
-                <p>&mdash; Since 2015</p>
-              </div>
+        <section className="py-6 md:py-10">
+        <h2 className="text-2xl md:text-2xl">Work Experience</h2>
+        {user?.experience.map((item) => {
+            return ( 
+          <div key={item._key} className=" grid grid-cols-12 pt-5">
+            <div className="col-span-12 md:col-span-4 py-2">
+                <p className="pb-2">{item.title}</p>
+                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs">&mdash; Since {item.yearStart}</span>
+                {item.yearEnd? <span className="border rounded-full bg-black/5 px-2 py-1 text-xs">&mdash; to {item.yearEnd}</span> : null }              
             </div>
-          </div>
-          <div className=" flex flex-wrap col-span-12 md:col-span-8">
-            <div className="grid items-center">
-              <p>I am working as a freelance graphic designer since 2015. My main platform is Fiverr.com and I have mainly designed logos. I also designed flyers, posters, business cards and website designs for various clients all over the world.</p>
+            <div className="col-span-12 md:col-span-8 py-2">
+                <p className="text-sm">{item.details}</p>
             </div>
-          </div>
+          </div> )
+          })}
         </section>
         <section className="py-6 md:py-10">
           <div className="grid gap-2">
@@ -63,12 +65,13 @@ export default async function Home() {
               <p>Most Recent Works</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
-            {cardData?.map((item) => {
+            {projectList?.map((item) => {
               return (
                 <Card key={item._id} href={"work/" + item.slug.current} title={item.title} date={item.date} image={item.images[0]} />
               )
             })}
           </div>
+          <div className="flex justify-center items-center pt-8"><Link href="/work"><Button variant="outline" className="hover:bg-foreground hover:text-background">See More</Button></Link></div>          
         </section>
         <section className="py-6 md:py-10">
           <div className="grid gap-2">

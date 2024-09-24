@@ -18,7 +18,8 @@ export const projectType = defineType({
     }),
     defineField({
         name: 'date',
-        type: 'date'
+        type: 'date',
+        initialValue: new Date().toISOString().slice(0, 10)
     }),
     defineField({
         name: 'images',

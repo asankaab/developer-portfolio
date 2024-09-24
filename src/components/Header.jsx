@@ -5,8 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircleX, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavList } from "./NavList";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+
+    const pathname = usePathname()
 
     const [nav, setNav] = useState(" top-0")
 
@@ -50,21 +54,21 @@ export default function Header() {
                 <CircleX onClick={menuTrigger} className={ !menuopen ? " hidden" : "" +"cursor-pointer md:hidden"} />
                 <nav className="hidden md:block left-0 w-full bg-background transition-all duration-700">
                     <div className="flex gap-4">
-                        <NavList className="transition text-secondary hover:text-black" />
+                        <NavList className="transition text-secondary hover:text-black" urlPath={pathname} />
                     </div>
                 </nav>
                 <div className="flex gap-10 items-center">
                     <p className=" text-nowrap text-xs">Based in Matara, Sri Lanka</p>
                     <div className="flex gap-4">
-                        <FontAwesomeIcon icon={faInstagram}/>
-                        <FontAwesomeIcon icon={faDribbble}/>
+                        <Link href="https://www.instagram.com/asanka_abew" target="_blank"><FontAwesomeIcon className="hover:scale-110 hover:rotate-12 transition" icon={faInstagram}/></Link>
+                        <Link href="https://dribbble.com/asanka_abew" target="_blank"><FontAwesomeIcon className="hover:scale-125 hover:rotate-12 transition" icon={faDribbble}/></Link>                        
                     </div>
                 </div>
             </div>
             <nav className={"md:hidden w-full min-h-svh bg-background transition-all duration-700 absolute -z-10" + " " + toggle}>
                 <div className="h-20 w-full "></div>
                 <div className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
-                    <NavList className="py-3 text-secondary hover:text-black" />
+                    <NavList onClick={menuTrigger} className="py-3 text-secondary hover:text-black" />
                 </div>
             </nav>
         </div>
