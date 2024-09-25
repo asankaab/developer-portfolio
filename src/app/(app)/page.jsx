@@ -23,7 +23,7 @@ export default async function Home() {
         <div className="md:w-1/2 grid items-center">
           <div className="flex gap-2 w-3/4">
             <Avatar>
-              <AvatarImage src={urlFor(user.photo).width(300).url()} />
+              <AvatarImage src={urlFor(user.photo).width(300).url()} alt="avatar"/>
               <AvatarFallback>A</AvatarFallback>
             </Avatar>
             <h1 className="text-4xl md:text-5xl col-span-3">Hello! I&apos;m {user.name}</h1>

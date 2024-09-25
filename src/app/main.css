@@ -51,3 +51,26 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* scrollbar styling */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c7c73c; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b2b2b2; 
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
