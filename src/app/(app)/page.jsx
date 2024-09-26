@@ -9,6 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
 import Footer from "@/components/Footer";
 import { urlFor } from "@/sanity/lib/image";
+import * as motion from "framer-motion/client"
 
 export default async function Home() {
 
@@ -16,10 +17,23 @@ export default async function Home() {
   const projectList = await getProjectList(9);
   const testimonials = await getTestimonials();
 
+  const list = {
+    visible: { opacity: 1, transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.1
+    }, },
+    hidden: { opacity: 0 },
+  }
+  
+  const item = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 20 , transition: { duration: 2, type: "tween" }},
+  }
+
   return (
-    <>
+    <motion.div initial="hidden" animate="visible" variants={list} >
     <main className="container w-full mx-auto px-3">
-      <div className="min-h-80 flex flex-wrap">
+      <motion.div variants={item} className="min-h-80 flex flex-wrap">
         <div className="md:w-1/2 grid items-center">
           <div className="flex gap-2 w-3/4">
             <Avatar>
@@ -39,27 +53,26 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
-        <section className="py-6 md:py-10">
+        <motion.section  variants={item} className="py-6 md:py-10">
         <h2 className="text-2xl md:text-2xl">Work Experience</h2>
         {user?.experience.map((item) => {
             return ( 
           <div key={item._key} className=" grid grid-cols-12 pt-5">
             <div className="col-span-12 md:col-span-4 py-2">
                 <p className="pb-2">{item.title}</p>
-                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs">&mdash; Since {item.yearStart}</span>
-                {item.yearEnd? <span className="border rounded-full bg-black/5 px-2 py-1 text-xs">&mdash; to {item.yearEnd}</span> : null }              
+                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
             </div>
             <div className="col-span-12 md:col-span-8 py-2">
                 <p className="text-sm">{item.details}</p>
             </div>
           </div> )
           })}
-        </section>
-        <section className="py-6 md:py-10">
+        </motion.section>
+        <motion.section  variants={item} className="py-6 md:py-10">
           <div className="grid gap-2">
               <h2 className="text-2xl md:text-2xl">Portfolio</h2>
               <p>Most Recent Works</p>
@@ -72,8 +85,8 @@ export default async function Home() {
             })}
           </div>
           <div className="flex justify-center items-center pt-8"><Link href="/work"><Button variant="outline" className="hover:bg-foreground hover:text-background">See More</Button></Link></div>          
-        </section>
-        <section className="py-6 md:py-10">
+        </motion.section>
+        <motion.section  variants={item} className="py-6 md:py-10">
           <div className="grid gap-2">
               <h2 className="text-2xl md:text-2xl">Testimonials</h2>
               <p>Client Reviews</p>
@@ -92,7 +105,7 @@ export default async function Home() {
               <CarouselPrevious className="hidden md:grid" /><CarouselNext className="hidden md:grid" />
             </Carousel>
           </div>
-        </section>
+        </motion.section>
       </div>
     </div>
     <div className="container w-full mx-auto px-3">
@@ -102,6 +115,6 @@ export default async function Home() {
       </div>
       <Footer/>
     </div>
-    </>
+    </motion.div>
   );
 }
