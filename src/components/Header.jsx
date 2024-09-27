@@ -63,7 +63,7 @@ export default function Header() {
 
     return (
         <div className={"bg-background fixed w-full z-50 transition-all duration-500" + nav}>
-            <div className="container mx-auto py-6 flex justify-between items-center px-3 border-b md:border-b-0">
+            <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="container mx-auto py-6 flex justify-between items-center px-3 border-b md:border-b-0">
                 <Menu onClick={menuTrigger} className={ menuopen ? " hidden" : "" +"cursor-pointer md:hidden"}/>
                 <CircleX onClick={menuTrigger} className={ !menuopen ? " hidden" : "" +"cursor-pointer md:hidden"} />
                 <nav className="hidden md:block left-0 w-full bg-background transition-all duration-700">
@@ -78,7 +78,7 @@ export default function Header() {
                         <Link aria-label="instagram link" href="https://dribbble.com/asanka_abew" target="_blank"><FontAwesomeIcon className="hover:scale-125 hover:rotate-12 transition" icon={faDribbble}/></Link>                        
                     </motion.div>
                 </motion.div>
-            </div>
+            </motion.div>
             <nav className={"md:hidden w-full min-h-svh bg-background transition-all duration-700 absolute -z-10" + " " + toggle}>
                 <div className="h-20 w-full "></div>
                 <div className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
