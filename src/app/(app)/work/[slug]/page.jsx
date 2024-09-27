@@ -24,7 +24,7 @@ export default async function Page({params}) {
                 {project.images.map((item) => {
                   return (
                     <CarouselItem key={item._key} className="flex justify-center items-center bg-grayshade">
-                      <Image className="h-auto w-auto scale-75 rounded-lg" src={urlFor(item).width(800).url()} width={900} height={900} alt="image"/>
+                      <Image className="h-auto w-auto scale-95 rounded-lg" src={urlFor(item).width(1000).url()} width={1000} height={1000} alt="image"/>
                     </CarouselItem>
                   )
                 })}
