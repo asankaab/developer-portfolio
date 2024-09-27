@@ -10,6 +10,7 @@ import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
 import Footer from "@/components/Footer";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
+import { child, parent } from "./animation";
 
 export default async function Home() {
 
@@ -31,10 +32,10 @@ export default async function Home() {
   }
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={list} >
+    <>
     <main className="container w-full mx-auto px-3">
-      <motion.div variants={item} className="min-h-80 flex flex-wrap">
-        <div className="md:w-1/2 grid items-center">
+      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="min-h-80 flex flex-wrap">
+        <motion.div variants={child} className="md:w-1/2 grid items-center">
           <div className="flex gap-2 w-3/4">
             <Avatar>
               <AvatarImage src={urlFor(user.photo).width(300).url()} alt="avatar"/>
@@ -42,8 +43,8 @@ export default async function Home() {
             </Avatar>
             <h1 className="text-4xl md:text-5xl col-span-3">Hello! I&apos;m {user.name}</h1>
           </div>
-        </div>
-        <div className="md:w-1/2 grid items-center">
+        </motion.div>
+        <motion.div variants={child} className="md:w-1/2 grid items-center">
           <div className="grid gap-2">
             <h2 className="text-2xl md:text-3xl">{user.occupation}</h2>
             <p>{user.slogan}</p>
@@ -52,16 +53,16 @@ export default async function Home() {
               <Link href="/contact"><Button variant="outline">Contact</Button></Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
-        <motion.section  variants={item} className="py-6 md:py-10">
-        <h2 className="text-2xl md:text-2xl">Work Experience</h2>
+        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.h2 variants={child} className="text-2xl md:text-2xl">Work Experience</motion.h2>
         {user?.experience.map((item) => {
             return ( 
-          <div key={item._key} className=" grid grid-cols-12 pt-5">
+          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-5">
             <div className="col-span-12 md:col-span-4 py-2">
                 <p className="pb-2">{item.title}</p>
                 <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
@@ -69,25 +70,25 @@ export default async function Home() {
             <div className="col-span-12 md:col-span-8 py-2">
                 <p className="text-sm">{item.details}</p>
             </div>
-          </div> )
+          </motion.div> )
           })}
         </motion.section>
-        <motion.section  variants={item} className="py-6 md:py-10">
-          <div className="grid gap-2">
+        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+          <motion.div variants={child} className="grid gap-2 py-5">
               <h2 className="text-2xl md:text-2xl">Portfolio</h2>
               <p>Most Recent Works</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
+          </motion.div>
+          <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
             {projectList?.map((item) => {
               return (
-                <Card key={item._id} href={"work/" + item.slug.current} title={item.title} date={item.date} image={item.images[0]} />
+                <Card variants={list} key={item._id} href={"work/" + item.slug.current} title={item.title} date={item.date} image={item.images[0]} />
               )
             })}
-          </div>
+          </motion.div>
           <div className="flex justify-center items-center pt-8"><Link href="/work"><Button variant="outline" className="hover:bg-foreground hover:text-background">See More</Button></Link></div>          
         </motion.section>
-        <motion.section  variants={item} className="py-6 md:py-10">
-          <div className="grid gap-2">
+        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+          <div className="grid gap-2 py-5">
               <h2 className="text-2xl md:text-2xl">Testimonials</h2>
               <p>Client Reviews</p>
           </div>
@@ -108,13 +109,13 @@ export default async function Home() {
         </motion.section>
       </div>
     </div>
-    <div className="container w-full mx-auto px-3">
-      <div className="min-h-80 flex flex-col justify-center items-center">
+    <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="container w-full mx-auto px-3">
+      <motion.div variants={child} className="min-h-80 flex flex-col justify-center items-center">
           <h1 className="text-5xl pb-4">Let&apos;s discuss!</h1>
-          <Link href="/contact"><Button>Contact</Button></Link>          
-      </div>
+          <Link href="/contact"><Button>Contact</Button></Link>
+      </motion.div>
       <Footer/>
-    </div>
     </motion.div>
+    </>
   );
 }
