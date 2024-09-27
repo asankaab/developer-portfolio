@@ -4,6 +4,8 @@ import Image from "next/image";
 import Loading from "../../loading";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import BackButton from "@/components/BackButton";
+import { PortableText } from "next-sanity";
+import { components } from "@/components/PortableText";
 
 export default async function Page({params}) {
 
@@ -33,11 +35,11 @@ export default async function Page({params}) {
             </Carousel>
           </div>
           <div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-2">
               <h1 className="text-3xl">{project.title}</h1>
               <span className="text-xs bg-grayshade px-2 py-1 rounded-full">{project.date}</span>
             </div>
-            <p className="py-2">{project.description}</p>
+            <PortableText value={project.description} components={components} />
           </div>
         </section>
       </div>
