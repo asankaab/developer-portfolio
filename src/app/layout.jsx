@@ -1,10 +1,5 @@
-import { Albert_Sans, Bricolage_Grotesque } from "next/font/google"
+import { Bricolage_Grotesque } from "next/font/google"
 import "./main.css"
-
-const albertSans = Albert_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ['latin'],
