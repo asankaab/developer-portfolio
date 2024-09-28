@@ -58,6 +58,21 @@ export default async function Home() {
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
+      <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.h2 variants={child} className="text-2xl md:text-2xl">Skills</motion.h2>
+        {user?.experience.map((item) => {
+            return ( 
+          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-5">
+            <div className="col-span-12 md:col-span-4 py-2">
+                <p className="pb-2">{item.title}</p>
+                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
+            </div>
+            <div className="col-span-12 md:col-span-8 py-2">
+                <p className="text-sm">{item.details}</p>
+            </div>
+          </motion.div> )
+          })}
+        </motion.section>
         <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
         <motion.h2 variants={child} className="text-2xl md:text-2xl">Work Experience</motion.h2>
         {user?.experience.map((item) => {

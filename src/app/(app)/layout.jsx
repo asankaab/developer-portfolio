@@ -1,11 +1,5 @@
-import { Albert_Sans } from "next/font/google"
 import "./app.css";
 import Header from "@/components/Header";
-
-const albertSans = Albert_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export const metadata = {
   title: "Asanka | Web Developer",
@@ -15,8 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={albertSans.className + ' bg-background'} >
+      <body>
         <Header />
           <div className="h-20 w-full bg-none"></div>
           {children}

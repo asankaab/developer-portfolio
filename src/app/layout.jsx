@@ -1,10 +1,15 @@
-import { Albert_Sans } from "next/font/google"
+import { Albert_Sans, Bricolage_Grotesque } from "next/font/google"
 import "./main.css"
 
 const albertSans = Albert_Sans({
   subsets: ['latin'],
   display: 'swap',
 });
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 // export const metadata = {
 //   title: "Asanka | Web Developer",
@@ -18,7 +23,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="./favicon.ico" sizes="any" />
       </head> */}
       <body
-        className={albertSans.className + ' bg-background'} >
+        className={bricolageGrotesque.className + ' bg-background'} >
           {children}
       </body>
     </html>
