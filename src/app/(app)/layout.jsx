@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-          <div className="h-20 w-full bg-none"></div>
+          {/* <div className="h-20 w-full bg-none"></div> */}
           {children}
       </body>
     </html>

@@ -34,25 +34,23 @@ export default async function Home() {
   return (
     <>
     <main className="container w-full mx-auto px-3">
-      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="min-h-80 flex flex-wrap">
-        <motion.div variants={child} className="md:w-1/2 grid items-center">
-          <div className="flex gap-2 w-3/4">
+      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="min-h-screen grid items-center">
+        <motion.div variants={child} className="flex gap-2 flex-wrap md:flex-nowrap">
+          <div className="grid pt-5">
             <Avatar>
               <AvatarImage src={urlFor(user.photo).width(300).url()} alt="avatar"/>
               <AvatarFallback>A</AvatarFallback>
             </Avatar>
-            <h1 className="text-4xl md:text-5xl col-span-3">Hello! I&apos;m {user.name}</h1>
           </div>
-        </motion.div>
-        <motion.div variants={child} className="md:w-1/2 grid items-center">
-          <div className="grid gap-2">
-            <h2 className="text-2xl md:text-3xl">{user.occupation}</h2>
-            <p>{user.slogan}</p>
-            <div className="flex gap-2">
-              <Link href="/work"><Button>See Work</Button></Link>
-              <Link href="/contact"><Button variant="outline">Contact</Button></Link>
-            </div>
-          </div>
+          <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="grid gap-2">
+            <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase">{user.name}</motion.h1>
+            <motion.h2 variants={child} className="text-xl md:text-4xl">{user.occupation}</motion.h2>
+            <motion.p variants={child} className="text-lg">{user.slogan}</motion.p>
+            <motion.div variants={child} className="flex gap-2">
+              <Button asChild><Link href="work">See Work</Link></Button>
+              <Button asChild variant="outline"><Link href="/contact">Contact</Link></Button>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </main>

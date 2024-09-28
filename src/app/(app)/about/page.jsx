@@ -1,6 +1,7 @@
 import { getUser } from "@/hooks/useData"
 import * as motion from "framer-motion/client"
 import { parent } from "../animation";
+import { PortableText } from "next-sanity";
 
 export default async function Page() {
 
@@ -10,7 +11,7 @@ export default async function Page() {
             <section className="py-6 md:py-10 grid grid-cols-12">
                 <div className="grid gap-2 col-span-12 md:col-span-8">
                     <h2 className="text-2xl md:text-2xl">About</h2>
-                    <p>{user.description}</p>
+                    <PortableText value={user.description}/>
                 </div>
             </section>
         </motion.div>
