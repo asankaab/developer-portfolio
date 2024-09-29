@@ -18,19 +18,19 @@ export default async function Page({params}) {
       <Spacer/>
       <div className="container w-full mx-auto px-3">
         <BackButton/>
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4 py-2">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 py-2">
           <div className="relative border border-black/5 rounded-xl overflow-hidden">
           <Carousel>
               <CarouselContent className="aspect-square">
                 {project.images.map((item) => {
                   return (
                     <CarouselItem key={item._key} className="flex justify-center items-center bg-grayshade">
-                      <Image className="h-auto w-auto scale-75 rounded-lg" src={urlFor(item).width(800).url()} width={900} height={900} alt="image"/>
+                      <Image className="h-auto w-auto scale-90 rounded-lg" src={urlFor(item).width(800).url()} width={900} height={900} alt="image"/>
                     </CarouselItem>
                   )
                 })}
               </CarouselContent>
-              <div className="absolute bottom-8 right-20">
+              <div className="absolute bottom-20 right-24">
                 <CarouselPrevious/><CarouselNext/>
               </div>
             </Carousel>

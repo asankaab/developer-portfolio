@@ -3,14 +3,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Card from "@/components/Card";
 import ReviewCard from "@/components/ReviewCard";
 import Link from "next/link";
-import { NavList } from "@/components/NavList";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { client } from "@/sanity/lib/client";
 import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
-import Footer from "@/components/Footer";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
-import { child, parent } from "./animation";
+import { child, parent, viewPortVal } from "./animation";
+import { ArrowDown } from "lucide-react";
 
 export default async function Home() {
 
@@ -34,7 +32,7 @@ export default async function Home() {
   return (
     <>
     <main className="container w-full mx-auto px-3">
-      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-20 md:min-h-dvh grid items-center">
+      <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-20 md:min-h-dvh grid items-center relative">
         <motion.div variants={child} className="flex gap-2 flex-wrap md:flex-nowrap">
           <div className="grid pt-5">
             <Avatar>
@@ -42,21 +40,24 @@ export default async function Home() {
               <AvatarFallback>A</AvatarFallback>
             </Avatar>
           </div>
-          <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="grid gap-2">
+          <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="grid gap-2">
             <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase">{user.name}</motion.h1>
             <motion.h2 variants={child} className="text-xl md:text-4xl">{user.occupation}</motion.h2>
-            <motion.p variants={child} className="text-lg">{user.slogan}</motion.p>
+            <motion.p variants={child} className="text-xs md:text-lg">{user.slogan}</motion.p>
             <motion.div variants={child} className="flex gap-2">
               <Button asChild><Link href="work">See Work</Link></Button>
               <Button asChild variant="outline"><Link href="/contact">Contact</Link></Button>
             </motion.div>
           </motion.div>
         </motion.div>
+        <div className="absolute top-0 right-0 z-50">
+          <ArrowDown/>
+        </div>
       </motion.div>
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
-      <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+      <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
         <motion.h2 variants={child} className="text-2xl md:text-2xl">Skills</motion.h2>
         {user?.experience.map((item) => {
             return ( 
@@ -71,7 +72,7 @@ export default async function Home() {
           </motion.div> )
           })}
         </motion.section>
-        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
         <motion.h2 variants={child} className="text-2xl md:text-2xl">Work Experience</motion.h2>
         {user?.experience.map((item) => {
             return ( 
@@ -86,12 +87,12 @@ export default async function Home() {
           </motion.div> )
           })}
         </motion.section>
-        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
           <motion.div variants={child} className="grid gap-2 py-5">
               <h2 className="text-2xl md:text-2xl">Portfolio</h2>
               <p>Most Recent Works</p>
           </motion.div>
-          <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
+          <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
             {projectList?.map((item) => {
               return (
                 <Card variants={list} key={item._id} href={"work/" + item.slug.current} title={item.title} date={item.date} image={item.images[0]} />
@@ -100,7 +101,7 @@ export default async function Home() {
           </motion.div>
           <div className="flex justify-center items-center pt-8"><Link href="/work"><Button variant="outline" className="hover:bg-foreground hover:text-background">See More</Button></Link></div>          
         </motion.section>
-        <motion.section variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
           <div className="grid gap-2 py-5">
               <h2 className="text-2xl md:text-2xl">Testimonials</h2>
               <p>Client Reviews</p>
@@ -122,12 +123,11 @@ export default async function Home() {
         </motion.section>
       </div>
     </div>
-    <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="container w-full mx-auto px-3">
+    <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="container w-full mx-auto px-3">
       <motion.div variants={child} className="min-h-80 flex flex-col justify-center items-center">
           <h1 className="text-5xl pb-4">Let&apos;s discuss!</h1>
           <Link href="/contact"><Button>Contact</Button></Link>
       </motion.div>
-      <Footer/>
     </motion.div>
     </>
   );

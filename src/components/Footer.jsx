@@ -1,13 +1,21 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { NavList } from "./NavList";
+import { getUser } from "@/hooks/useData";
 
-export default function Footer() {
+export default async function Footer() {
+
+    const user = await getUser();
+    const currentYear = new Date().getFullYear();
+    
     return (
         <footer className="container w-full mx-auto px-3 py-8">
             <nav className="w-full bg-background">
-                <div className="flex flex-wrap gap-4">
-                    <NavList/>
+                <div className="text-xs">
+                    {/* <NavList/> */}
+                    <span>&copy; 2024</span>
+                    {currentYear > 2024 ? <span>&mdash;{currentYear}</span> : null}
+                    <span> | {user.name}</span>
                 </div>
             </nav>
         </footer>
