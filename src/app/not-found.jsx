@@ -1,8 +1,8 @@
-'use client'
-
+import { Button } from '@/components/Button'
 import './main.css'
-import Footer from '@/components/Footer'
 import BackButton from '@/components/BackButton'
+import Link from 'next/link'
+import { HomeIcon } from 'lucide-react'
  
 export default function NotFound() {
 
@@ -11,9 +11,12 @@ export default function NotFound() {
       <div className="min-h-svh flex flex-col justify-center items-center gap-2">
         <h2 className='text-3xl'>Not Found!</h2>
         <p>Could not find requested resource.</p>
-        <BackButton/> 
+        <div className='flex gap-2'>
+          <BackButton/>
+          <Link className='bg-grayshade/5 rounded-full px-3 py-1 border border-neutral-500/20 text-xs flex gap-2' href='/'><HomeIcon size={15}/> Home</Link>
+        </div>
+        
       </div>
-      <div className='absolute bottom-0'><Footer/></div>
     </div>
   )
 }

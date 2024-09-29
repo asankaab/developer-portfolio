@@ -1,20 +1,18 @@
 import Footer from "@/components/Footer";
-import "./app.css";
 import Header from "@/components/Header";
+import "./app.css";
 
 export const metadata = {
   title: "Asanka | Web Developer",
   description: "asanker.com",
 };
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   return (
-    <html lang="en">
-      <body>
+      <>
         <Header />
           {children}
         <Footer/>
-      </body>
-    </html>
+      </>
   );
 }

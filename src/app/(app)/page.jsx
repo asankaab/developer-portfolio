@@ -50,9 +50,10 @@ export default async function Home() {
             </motion.div>
           </motion.div>
         </motion.div>
-        <div className="absolute top-0 right-0 z-50">
-          <ArrowDown/>
-        </div>
+        <motion.div variants={child} className="absolute right-5 bottom-10 md:bottom-20 grid gap-2">
+          <p style={{textOrientation: 'sideways', writingMode: 'vertical-rl'}} className=" text-xs hidden md:block">Scroll to bottom</p>
+          <motion.div animate={{ y: 20 }}  transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}><ArrowDown size={15}/></motion.div>
+        </motion.div>
       </motion.div>
     </main>
     <div className="w-full bg-grayshade py-4">
@@ -87,7 +88,7 @@ export default async function Home() {
           </motion.div> )
           })}
         </motion.section>
-        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6">
           <motion.div variants={child} className="grid gap-2 py-5">
               <h2 className="text-2xl md:text-2xl">Portfolio</h2>
               <p>Most Recent Works</p>
