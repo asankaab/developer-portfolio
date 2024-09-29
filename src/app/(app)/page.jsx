@@ -35,13 +35,13 @@ export default async function Home() {
       <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-20 md:min-h-dvh grid items-center relative">
         <motion.div variants={child} className="flex gap-2 flex-wrap md:flex-nowrap">
           <div className="grid pt-5">
-            <Avatar>
+            <Avatar className="border-2">
               <AvatarImage src={urlFor(user.photo).width(300).url()} alt="avatar"/>
               <AvatarFallback>A</AvatarFallback>
             </Avatar>
           </div>
           <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="grid gap-2">
-            <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase">{user.name}</motion.h1>
+            <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase font-medium">{user.name}</motion.h1>
             <motion.h2 variants={child} className="text-xl md:text-4xl">{user.occupation}</motion.h2>
             <motion.p variants={child} className="text-xs md:text-lg">{user.slogan}</motion.p>
             <motion.div variants={child} className="flex gap-2">
@@ -51,7 +51,7 @@ export default async function Home() {
           </motion.div>
         </motion.div>
         <motion.div variants={child} className="absolute right-0 bottom-10 md:bottom-20 hidden md:grid gap-1 justify-items-center">
-          <p style={{textOrientation: 'sideways', writingMode: 'vertical-rl'}} className=" text-xs">Scroll to bottom</p>
+          <p style={{textOrientation: 'sideways', writingMode: 'vertical-rl'}} className=" text-xs uppercase tracking-widest">Scroll to bottom</p>
           <motion.div className="grid gap-1 justify-items-center" animate={{ y: 20 }} transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}>
             <motion.div  animate={{ opacity: 1 }} transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}><Dot size={10}/></motion.div>
             <ArrowDown size={15}/></motion.div>
