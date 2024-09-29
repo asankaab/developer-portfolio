@@ -8,7 +8,7 @@ import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, parent, viewPortVal } from "./animation";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Dot } from "lucide-react";
 
 export default async function Home() {
 
@@ -50,9 +50,11 @@ export default async function Home() {
             </motion.div>
           </motion.div>
         </motion.div>
-        <motion.div variants={child} className="absolute right-5 bottom-10 md:bottom-20 grid gap-2">
-          <p style={{textOrientation: 'sideways', writingMode: 'vertical-rl'}} className=" text-xs hidden md:block">Scroll to bottom</p>
-          <motion.div animate={{ y: 20 }}  transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}><ArrowDown size={15}/></motion.div>
+        <motion.div variants={child} className="absolute right-0 bottom-10 md:bottom-20 hidden md:grid gap-1 justify-items-center">
+          <p style={{textOrientation: 'sideways', writingMode: 'vertical-rl'}} className=" text-xs">Scroll to bottom</p>
+          <motion.div className="grid gap-1 justify-items-center" animate={{ y: 20 }} transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}>
+            <motion.div  animate={{ opacity: 1 }} transition={{ repeat: Infinity, repeatType: "mirror",  duration: 2, ease: "easeInOut" }}><Dot size={10}/></motion.div>
+            <ArrowDown size={15}/></motion.div>
         </motion.div>
       </motion.div>
     </main>
