@@ -9,6 +9,7 @@ import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, parent, viewPortVal } from "./animation";
 import { ArrowDown, Dot } from "lucide-react";
+import TypeAnimate from "@/components/TypeAnimate";
 
 export default async function Home() {
 
