@@ -34,7 +34,7 @@ export default async function Home() {
   return (
     <>
     <main className="container w-full mx-auto px-3">
-      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="min-h-screen grid items-center">
+      <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="py-20 md:min-h-dvh grid items-center">
         <motion.div variants={child} className="flex gap-2 flex-wrap md:flex-nowrap">
           <div className="grid pt-5">
             <Avatar>

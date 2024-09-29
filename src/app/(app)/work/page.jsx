@@ -3,6 +3,7 @@ import { getProject, getProjectList } from "@/hooks/useData";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { parent } from "@/app/(app)/animation";
+import Spacer from "@/components/Spacer";
 
 export default async function Page({params}) {
 
@@ -10,7 +11,8 @@ export default async function Page({params}) {
 
   return (
     <div className="container w-full mx-auto px-3">
-      <motion.section variants={parent} initial="hidden" whileInView="visible" className="py-6 md:py-10">
+      <Spacer/>
+      <motion.section variants={parent} initial="hidden" whileInView="visible">
         <div className="grid gap-2">
             <h2 className="text-2xl md:text-2xl">Portfolio</h2>
         </div>

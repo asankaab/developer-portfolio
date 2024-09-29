@@ -4,6 +4,8 @@ import Image from "next/image";
 import Loading from "../../loading";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import BackButton from "@/components/BackButton";
+import { PortableText } from "next-sanity";
+import Spacer from "@/components/Spacer";
 
 export default async function Page({params}) {
 
@@ -13,6 +15,7 @@ export default async function Page({params}) {
 
     return (
     <div className="w-full">
+      <Spacer/>
       <div className="container w-full mx-auto px-3">
         <BackButton/>
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 py-2">
@@ -37,7 +40,7 @@ export default async function Page({params}) {
               <h1 className="text-3xl">{project.title}</h1>
               <span className="text-xs bg-grayshade px-2 py-1 rounded-full">{project.date}</span>
             </div>
-            <p className="py-2">{project.description}</p>
+            <PortableText value={project.description} />
           </div>
         </section>
       </div>
