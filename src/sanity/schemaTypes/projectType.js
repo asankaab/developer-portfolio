@@ -4,6 +4,9 @@ export const projectType = defineType({
   name: 'projects',
   title: 'Projects',
   type: 'document',
+  groups: [
+    { name: 'content' }
+  ],
   fields: [
     defineField({
         name: 'title',
@@ -33,7 +36,14 @@ export const projectType = defineType({
         }),
     defineField({
       name: 'description',
-      type: 'text',
+      type: 'array',
+      group: 'content',
+      of: [
+        defineField({
+          name: 'content',
+          type: 'block'
+        })
+      ]
     }),
   ],
 })

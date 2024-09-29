@@ -4,16 +4,20 @@ import Card from "@/components/Card";
 import ReviewCard from "@/components/ReviewCard";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { getProjectList, getTestimonials, getUser } from "@/hooks/useData";
+import { getExperiences, getProjectList, getSkills, getTestimonials, getUser } from "@/hooks/useData";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, parent, viewPortVal } from "./animation";
 import { ArrowDown, Dot } from "lucide-react";
 import TypeAnimate from "@/components/TypeAnimate";
+import { PortableText } from "next-sanity";
+import { PortableTextComp } from "@/components/PortableTextComp";
 
 export default async function Home() {
 
   const user = await getUser();
+  const skills = await getSkills();
+  const experiences = await getExperiences();
   const projectList = await getProjectList(9);
   const testimonials = await getTestimonials();
 
@@ -61,38 +65,37 @@ export default async function Home() {
     </main>
     <div className="w-full bg-grayshade py-4">
       <div className="container w-full mx-auto px-3">
-      <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
-        <motion.h2 variants={child} className="text-2xl md:text-2xl">Skills</motion.h2>
-        {user?.experience.map((item) => {
+      <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6">
+        <motion.h2 variants={child} className="text-2xl">Skills</motion.h2>
+        {skills?.map((item) => {
             return ( 
-          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-5">
-            <div className="col-span-12 md:col-span-4 py-2">
-                <p className="pb-2">{item.title}</p>
-                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
+          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-2">
+            <div className="col-span-12 md:col-span-4 pb-1">
+                <p>{item.title}</p>
             </div>
-            <div className="col-span-12 md:col-span-8 py-2">
-                <p className="text-sm">{item.details}</p>
-            </div>
-          </motion.div> )
-          })}
-        </motion.section>
-        <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6 md:py-10">
-        <motion.h2 variants={child} className="text-2xl md:text-2xl">Work Experience</motion.h2>
-        {user?.experience.map((item) => {
-            return ( 
-          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-5">
-            <div className="col-span-12 md:col-span-4 py-2">
-                <p className="pb-2">{item.title}</p>
-                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
-            </div>
-            <div className="col-span-12 md:col-span-8 py-2">
-                <p className="text-sm">{item.details}</p>
+            <div className="col-span-12 md:col-span-8 pb-1">
+                <PortableText value={item.details} components={PortableTextComp} />
             </div>
           </motion.div> )
           })}
         </motion.section>
         <motion.section variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-6">
-          <motion.div variants={child} className="grid gap-2 py-5">
+        <motion.h2 variants={child} className="text-2xl">Work Experience</motion.h2>
+        {experiences?.map((item) => {
+            return ( 
+          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-2">
+            <div className="col-span-12 md:col-span-4 py-2">
+                <p className="pb-1">{item.title}</p>
+                <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
+            </div>
+            <div className="col-span-12 md:col-span-8 py-1">
+                <p className="text-sm">{item.details}</p>
+            </div>
+          </motion.div> )
+          })}
+        </motion.section>
+        <motion.section variants={parent} className="py-6">
+          <motion.div variants={child} viewport={viewPortVal} initial="hidden" whileInView="visible" className="grid gap-2">
               <h2 className="text-2xl md:text-2xl">Portfolio</h2>
               <p>Most Recent Works</p>
           </motion.div>

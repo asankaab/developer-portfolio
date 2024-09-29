@@ -37,37 +37,13 @@ export const userType = defineType({
     // group about
     defineField({
       name: 'description',
-      type: 'text',
-      group: 'about'
-    }),
-    defineField({
-      name: 'experience',
       type: 'array',
       group: 'about',
       of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              type: 'string'
-            }),
-            defineField({
-              name: 'details',
-              type: 'text',
-              validation: rule => rule.max(500)
-            }),
-            defineField({
-              name: 'yearStart',
-              type: 'number',
-              title: 'Start Year',
-            }),
-            defineField({
-              name: 'yearEnd',
-              type: 'number',
-              title: 'End Year',
-            })
-          ]}
+        defineField({
+          name: 'description',
+          type: 'block'
+        })
       ]
     }),
 
