@@ -65,8 +65,10 @@ export default function Header() {
     return (
         <div className={"bg-background fixed w-full z-50 transition-all duration-500" + nav}>
             <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="container mx-auto py-6 flex justify-between items-center px-3 border-b md:border-b-0">
-                <Menu onClick={menuTrigger} className={ menuopen ? " hidden" : "" +"cursor-pointer md:hidden"}/>
-                <CircleX onClick={menuTrigger} className={ !menuopen ? " hidden" : "" +"cursor-pointer md:hidden"} />
+                <div variants={child} >
+                    <Menu onClick={menuTrigger} className={ menuopen ? " hidden" : "" +"cursor-pointer md:hidden"}/>
+                    <CircleX onClick={menuTrigger} className={ !menuopen ? " hidden" : "" +"cursor-pointer md:hidden"} />
+                </div>
                 <nav className="hidden md:block left-0 w-full bg-background transition-all duration-700">
                     <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="flex gap-4">
                         <NavList className="transition text-foreground hover:text-black" urlPath={pathname} />
