@@ -13,7 +13,7 @@ export default function NotFound() {
         <p>Could not find requested resource.</p>
         <div className='flex gap-2'>
           <BackButton/>
-          <Link className='bg-grayshade/5 rounded-full px-3 py-1 border border-neutral-500/20 text-xs flex gap-2' href='/'><HomeIcon size={15}/> Home</Link>
+          <Link className='bg-grayshade/5 rounded-md p-2 border border-neutral-500/20 text-xs flex gap-2 group' href='/'><HomeIcon size={24} className='group-hover:scale-125 transition'/></Link>
         </div>
         
       </div>

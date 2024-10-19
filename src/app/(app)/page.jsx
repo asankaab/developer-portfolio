@@ -9,9 +9,8 @@ import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, parent, viewPortVal } from "./animation";
 import { ArrowDown, Dot } from "lucide-react";
-import TypeAnimate from "@/components/TypeAnimate";
 import { PortableText } from "next-sanity";
-import { PortableTextComp } from "@/components/PortableTextComp";
+import { dataView } from "@/components/PortableComponents";
 
 export default async function Home() {
 
@@ -74,7 +73,7 @@ export default async function Home() {
                 <p>{item.title}</p>
             </div>
             <div className="col-span-12 md:col-span-8 pb-1">
-                <PortableText value={item.details} components={PortableTextComp} />
+                <PortableText value={item.details} components={dataView} />
             </div>
           </motion.div> )
           })}
