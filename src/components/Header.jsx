@@ -8,6 +8,7 @@ import { NavList } from "./NavList";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion"
+import Spacer from "./Spacer";
 
 export default function Header() {
 
@@ -82,7 +83,7 @@ export default function Header() {
                 </motion.div>
             </motion.div>
             <nav className={"md:hidden w-full min-h-svh bg-background transition-all duration-700 absolute -z-10" + " " + toggle}>
-                <div className="h-20 w-full "></div>
+                <Spacer/>
                 <div className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
                     <NavList onClick={menuTrigger} className="text-foreground hover:text-black py-3" />
                 </div>

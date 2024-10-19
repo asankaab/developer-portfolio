@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client";
 
 export async function getUser() {
 
-    const query = `*[_type == "users" && admin]{name, photo, occupation, slogan, experience, email, description}[0]`;
+    const query = `*[_type == "users" && admin]{name, photo, occupation, slogan, email, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 
@@ -44,3 +44,25 @@ export async function getTestimonials() {
     return testimonials;
 
 } 
+
+export async function getExperiences() {
+
+    const query = `*[_type == "experiences"]{title, details, yearStart}`;
+
+    const options = { next: { revalidate: 60 } };
+
+    const experiences = await client.fetch(query, {}, options ).then((data) => data);
+
+    return experiences;
+}
+
+export async function getSkills() {
+
+    const query = `*[_type == "skills"]{title, details}`;
+
+    const options = { next: { revalidate: 60 } };
+
+    const skills = await client.fetch(query, {}, options ).then((data) => data);
+
+    return skills;
+}
