@@ -47,7 +47,7 @@ export async function getTestimonials() {
 
 export async function getExperiences() {
 
-    const query = `*[_type == "experiences"]{title, details, yearStart}`;
+    const query = `*[_type == "experiences"]{title, details, yearStart, _id}`;
 
     const options = { next: { revalidate: 60 } };
 
@@ -58,7 +58,7 @@ export async function getExperiences() {
 
 export async function getSkills() {
 
-    const query = `*[_type == "skills"]{title, details}`;
+    const query = `*[_type == "skills"]{title, details, _id}`;
 
     const options = { next: { revalidate: 60 } };
 

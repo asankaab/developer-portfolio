@@ -68,7 +68,7 @@ export default async function Home() {
         <motion.h2 variants={child} className="text-2xl">Skills</motion.h2>
         {skills?.map((item) => {
             return ( 
-          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-2">
+          <motion.div variants={child} key={item._id} className=" grid grid-cols-12 pt-2">
             <div className="col-span-12 md:col-span-4 pb-1">
                 <p>{item.title}</p>
             </div>
@@ -82,7 +82,7 @@ export default async function Home() {
         <motion.h2 variants={child} className="text-2xl">Work Experience</motion.h2>
         {experiences?.map((item) => {
             return ( 
-          <motion.div variants={child} key={item._key} className=" grid grid-cols-12 pt-2">
+          <motion.div variants={child} key={item._id} className=" grid grid-cols-12 pt-2">
             <div className="col-span-12 md:col-span-4 py-2">
                 <p className="pb-1">{item.title}</p>
                 <span className="border rounded-full bg-black/5 px-2 py-1 text-xs"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
@@ -112,7 +112,7 @@ export default async function Home() {
               <h2 className="text-2xl md:text-2xl">Testimonials</h2>
               <p>Client Reviews</p>
           </div>
-          <div className="py-4">
+          <div className="py-4 px-5 md:px-0">
             <Carousel>
               <CarouselContent>
                 {testimonials?.map((item) => {
@@ -123,7 +123,7 @@ export default async function Home() {
                   )
                 })}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:grid" /><CarouselNext className="hidden md:grid" />
+              <CarouselPrevious /><CarouselNext />
             </Carousel>
           </div>
         </motion.section>
