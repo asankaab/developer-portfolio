@@ -26,7 +26,7 @@ export function NavList({className, onClick, urlPath}) {
                 }
 
                 return ( 
-                    <Link onClick={onClick} className={className} key={key} href={item.path} >
+                    <Link onClick={onClick} className={className} key={item.key} href={item.path} >
                         <motion.div variants={child} className="group overflow-hidden text-foreground">{item.title}
                             <div className={"md:bg-foreground transition h-0.5 w-full origin-bottom-left scale-x-0 group-hover:scale-x-100" + active}></div>
                         </motion.div>

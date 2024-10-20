@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react"
 export const description = {
     list: {
       // Ex. 1: customizing common list types
-      bullet: ({children}) => <ul className="mt-xl list-inside list-disc text-foreground">{children}</ul>,
+      bullet: ({children}) => <ul className="mt-xl list-disc pl-4 text-foreground">{children}</ul>,
       number: ({children}) => <ol className="mt-lg list-decimal">{children}</ol>,
   
       // Ex. 2: rendering custom lists
