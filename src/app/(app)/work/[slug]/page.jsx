@@ -8,9 +8,9 @@ import { PortableText } from "next-sanity";
 import Spacer from "@/components/Spacer";
 import { description } from "@/components/PortableComponents";
 
-export default async function Page({params}) {
+export default async function Page() {
 
-  const project = await getProject(params.slug)
+  const project = await getProject(null)
 
   if (project) {
 
