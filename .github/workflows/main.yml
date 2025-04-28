@@ -13,4 +13,4 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           # SANITY_STUDIO_CONFIG_PATH: src/sanity
         with:
-          args: npx sanity deploy
+          args: deploy
