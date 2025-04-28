@@ -45,5 +45,40 @@ export const projectType = defineType({
         })
       ]
     }),
+    defineField({
+      name: 'source',
+      title: 'Source',
+      type: 'url',
+    }),
+    defineField({
+      name: 'preview',
+      title: 'Preview',
+      type: 'url',
+    }),
+    defineField({
+      name: 'techStack',
+      title: 'Tech Stack',
+      type: 'array',
+      of: [
+        { type: 'string' }
+      ],
+      options: {
+        layout: 'grid',
+        list: [
+          { title: 'Next.JS', value: 'nextjs' },
+          { title: 'Sanity', value: 'sanity' },
+          { title: 'Strapi', value: 'strapi' },
+          { title: 'Contentful', value: 'contentful' },
+          { title: 'Angular', value: 'angular' },
+          { title: 'Tailwind', value: 'tailwind' },
+          { title: 'PostCSS', value: 'postcss' },
+          { title: 'SCSS', value: 'scss' },
+          { title: 'React', value: 'react' },
+          { title: 'Node.JS', value: 'nodejs' },
+          { title: 'GraphQL', value: 'graphql' },
+          { title: 'TypeScript', value: 'typescript' }
+        ]
+      }
+    }),
   ],
 })

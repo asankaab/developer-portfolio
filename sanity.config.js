@@ -15,6 +15,7 @@ import {structure} from './src/sanity/structure'
 import { media } from 'sanity-plugin-media'
 
 export default defineConfig({
+  name: 'studio',
   basePath: '/studio',
   projectId,
   dataset,

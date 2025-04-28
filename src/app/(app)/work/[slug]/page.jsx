@@ -1,7 +1,6 @@
 import { getProject } from "@/hooks/useData";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
-import Loading from "../../loading";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import BackButton from "@/components/BackButton";
 import { PortableText } from "next-sanity";
@@ -10,7 +9,10 @@ import { description } from "@/components/PortableComponents";
 
 export default async function Page({params}) {
 
-  const project = await getProject(params.slug)
+  const urlPara = await params;
+
+  const project = await getProject(urlPara.slug)
+  console.log(project)
 
   if (project) {
 
@@ -30,7 +32,7 @@ export default async function Page({params}) {
                     {project.images.map((item) => {
                       return (
                         <CarouselItem key={item._key}>
-                          <Image className="rounded-xl border" src={urlFor(item).width(1200).url()} width={1200} height={900} alt="image"/>
+                          <Image className="rounded-xl border" src={urlFor(item).width(1920).height(1200).url()} width={1920} height={1200} alt={item.asset._ref}/>
                         </CarouselItem>
                       )
                     })}
@@ -39,9 +41,12 @@ export default async function Page({params}) {
               </Carousel>
             </div>
           </div>
-          <div className="py-2 w-full md:w-9/12">
-            <h1 className="text-3xl py-2">{project.title}</h1>
-            <PortableText value={project.description} components={description}/>
+          <div className="md:flex gap-4 mt-8 w-11/12 mx-auto justify-between items-start">
+            <div className="w-full md:w-8/12">
+              <h1 className="text-3xl py-2">{project.title}</h1>
+              <PortableText value={project.description} components={description}/>
+            </div>
+            <div className="p-2 w-full md:w-4/12 border rounded-xl">links</div>
           </div>
         </section>
       </div>
