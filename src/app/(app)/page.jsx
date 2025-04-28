@@ -4,7 +4,7 @@ import Card from "@/components/Card";
 import ReviewCard from "@/components/ReviewCard";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { getExperiences, getProjectList, getSkills, getTestimonials, getUser } from "@/hooks/useData";
+import { getExperiences, getProjectList, getSkills, getTestimonials, getUser } from "@/api/sanityfetch";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, parent, viewPortVal } from "./animation";

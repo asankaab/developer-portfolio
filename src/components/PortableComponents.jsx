@@ -20,8 +20,8 @@ export const description = {
       link: ({children, value}) => {
         const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
         return (
-          <a href={value.href} rel={rel} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 my-2">
-            {children}<ExternalLink size={16}/>
+          <a href={value.href} rel={rel} target="blank" className="underline underline-offset-2 hover:bg-slate-300">
+            {children}
           </a>
         )
       },

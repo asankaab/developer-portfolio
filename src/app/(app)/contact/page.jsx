@@ -1,4 +1,4 @@
-import { getUser } from "@/hooks/useData"
+import { getUser } from "@/api/sanityfetch"
 import Link from "next/link";
 import * as motion from "framer-motion/client"
 import { parent } from "../animation";

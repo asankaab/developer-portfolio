@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { NavList } from "./NavList";
-import { getUser } from "@/hooks/useData";
+import { getUser } from "@/api/sanityfetch";
 
 export default async function Footer() {
 

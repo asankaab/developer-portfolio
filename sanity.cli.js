@@ -12,4 +12,7 @@ export default defineCliConfig({
     dataset: dataset
   },
   studioHost: 'asanka',
+  project: {
+    basePath: '/'
+  }
 });

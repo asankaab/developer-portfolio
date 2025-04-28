@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import { getProject, getProjectList } from "@/hooks/useData";
+import { getProject, getProjectList } from "@/api/sanityfetch";
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { parent } from "@/app/(app)/animation";

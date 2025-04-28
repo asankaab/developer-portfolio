@@ -24,7 +24,7 @@ export async function getProjectList(limit) {
 
 export async function getProject(slug) {
 
-    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date, description}[0]`;
+    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date, source, preview, techStack, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 

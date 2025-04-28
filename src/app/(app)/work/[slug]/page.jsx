@@ -1,4 +1,4 @@
-import { getProject } from "@/hooks/useData";
+import { getProject } from "@/api/sanityfetch";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -6,6 +6,7 @@ import BackButton from "@/components/BackButton";
 import { PortableText } from "next-sanity";
 import Spacer from "@/components/Spacer";
 import { description } from "@/components/PortableComponents";
+import { AppWindow, Atom, Dock, ExternalLink, FolderCode, Link, ProjectorIcon } from "lucide-react";
 
 export default async function Page({params}) {
 
@@ -46,7 +47,25 @@ export default async function Page({params}) {
               <h1 className="text-3xl py-2">{project.title}</h1>
               <PortableText value={project.description} components={description}/>
             </div>
-            <div className="p-2 w-full md:w-4/12 border rounded-xl">links</div>
+            <div className="p-2 w-full md:w-3/12 border rounded-xl bg-gray-50">
+              <div className="pb-4">
+                <h4 className="pb-1 font-bold text-neutral-700 inline-flex items-center gap-2"><AppWindow size={12}/>Links</h4>
+                <div className="flex gap-2 flex-wrap">
+                  <a href={project.preview} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-black hover:bg-neutral-700 text-white transition font-bold">Preview <ExternalLink size={14}/></a>
+                  <a href={project.source} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-white hover:bg-neutral-700 hover:text-white transition font-bold">Source <FolderCode size={14}/></a>
+                </div>
+              </div>
+              <div className="pb-4">
+                <h4 className="pb-1 font-bold text-neutext-neutral-700 inline-flex items-center gap-2"><Atom size={12}/>Technologies</h4>
+                <div className="flex gap-2 flex-wrap">
+                  {project.techStack?.map((item) => {
+                    return (
+                      <span key={item} className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-white">{item}</span>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

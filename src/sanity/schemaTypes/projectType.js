@@ -49,16 +49,19 @@ export const projectType = defineType({
       name: 'source',
       title: 'Source',
       type: 'url',
+      group: 'content',
     }),
     defineField({
       name: 'preview',
       title: 'Preview',
       type: 'url',
+      group: 'content',
     }),
     defineField({
       name: 'techStack',
       title: 'Tech Stack',
       type: 'array',
+      group: 'content',
       of: [
         { type: 'string' }
       ],
