@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client";
 
 export async function getUser() {
 
-    const query = `*[_type == "users" && admin]{name, photo, occupation, slogan, email, description}[0]`;
+    const query = `*[_type == "user"]{name, photo, occupation, slogan, email, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 
@@ -24,7 +24,7 @@ export async function getProjectList(limit) {
 
 export async function getProject(slug) {
 
-    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date, source, preview, techStack, description}[0]`;
+    const query = `*[_type == "projects" && slug.current == "${slug}"]{title, slug, images, date, source, preview, "techstack": techstack[]->, description}[0]`;
 
     const options = { next: { revalidate: 60 } };
 

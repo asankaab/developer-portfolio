@@ -1,9 +1,10 @@
-import { rule } from 'postcss'
+import { Briefcase } from 'lucide-react'
 import {defineField, defineType} from 'sanity'
 
 export const experiencesType = defineType({
   name: 'experiences',
   type: 'document',
+  icon: Briefcase,
   fields: [
     defineField({
       name: 'title',

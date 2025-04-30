@@ -1,31 +1,48 @@
 'use client'
 
-/**
- * This configuration is used to for the Sanity Studio that’s mounted on the `\src\app\studio\[[...tool]]\page.jsx` route
- */
-
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './src/sanity/env'
-import {schema} from './src/sanity/schemaTypes'
 import {structure} from './src/sanity/structure'
 import { media } from 'sanity-plugin-media'
+import { projectType } from './src/sanity/schemaTypes/projectType'
+import { testimonialType } from './src/sanity/schemaTypes/testimonialType'
+import { experiencesType } from './src/sanity/schemaTypes/experienceType'
+import { skillsType } from './src/sanity/schemaTypes/skillsType'
+import { techStackType } from './src/sanity/schemaTypes/techStackType'
+import { userType } from './src/sanity/schemaTypes/userType'
+
+const singletonActions = new Set(["publish", "discardChanges", "restore"])
+
+const singletonTypes = new Set(["user"])
+
+const schemaTypes = [
+  userType,
+  projectType,
+  skillsType,
+  techStackType,
+  experiencesType,
+  testimonialType,
+];
 
 export default defineConfig({
   name: 'studio',
   basePath: '/studio',
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
-  schema,
+  schema: { 
+    types: schemaTypes, templates: (templates) =>
+    templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)), },
+  document: {
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
+  },
   plugins: [
     structureTool({structure}),
-    // Vision is for querying with GROQ from inside the Studio
-    // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
-    media()
+    media(),
   ],
 })
