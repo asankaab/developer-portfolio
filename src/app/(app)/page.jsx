@@ -35,7 +35,7 @@ export default async function Home() {
 
   return (
     <>
-    <main className="container w-full mx-auto px-3">
+    <main className="container w-full mx-auto px-3 -mt-20">
       <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="py-20 md:min-h-dvh grid items-center relative">
         <motion.div variants={child} className="flex gap-2 flex-wrap md:flex-nowrap">
           <div className="grid pt-5">

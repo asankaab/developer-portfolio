@@ -4,22 +4,19 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import BackButton from "@/components/BackButton";
 import { PortableText } from "next-sanity";
-import Spacer from "@/components/Spacer";
 import { description } from "@/components/PortableComponents";
-import { AppWindow, Atom, Dock, ExternalLink, FolderCode, Link, ProjectorIcon } from "lucide-react";
+import { AppWindow, Atom, Dock, ExternalLink, FolderCode  } from "lucide-react";
 
 export default async function Page({params}) {
 
   const urlPara = await params;
 
   const project = await getProject(urlPara.slug)
-  console.log(project)
 
   if (project) {
 
     return (
     <div className="w-full">
-      <Spacer/>
       <div className="container w-full mx-auto px-3">
         <div className="flex justify-between items-center pb-2">
           <BackButton/>              
@@ -47,20 +44,21 @@ export default async function Page({params}) {
               <h1 className="text-3xl py-2">{project.title}</h1>
               <PortableText value={project.description} components={description}/>
             </div>
-            <div className="p-2 w-full md:w-3/12 border rounded-xl bg-gray-50">
+            <div className="p-2 w-full md:w-3/12 border rounded-xl bg-black/5">
               <div className="pb-4">
-                <h4 className="pb-1 font-bold text-neutral-700 inline-flex items-center gap-2"><AppWindow size={12}/>Links</h4>
+                <h4 className="pb-1 font-bold text-foreground inline-flex items-center gap-2"><AppWindow size={12}/>Links</h4>
                 <div className="flex gap-2 flex-wrap">
-                  <a href={project.preview} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-black hover:bg-neutral-700 text-white transition font-bold">Preview <ExternalLink size={14}/></a>
-                  <a href={project.source} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-white hover:bg-neutral-700 hover:text-white transition font-bold">Source <FolderCode size={14}/></a>
+                  <a href={project.preview} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-foreground hover:bg-neutral-600 text-background hover:text-white transition font-bold">Preview <ExternalLink size={14}/></a>
+                  <a href={project.source} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-background hover:bg-neutral-600 hover:text-white transition font-bold">Source <FolderCode size={14}/></a>
                 </div>
               </div>
               <div className="pb-4">
-                <h4 className="pb-1 font-bold text-neutext-neutral-700 inline-flex items-center gap-2"><Atom size={12}/>Technologies</h4>
+                <h4 className="pb-1 font-bold text-foreground inline-flex items-center gap-2"><Atom size={12}/>Technologies</h4>
                 <div className="flex gap-2 flex-wrap">
-                  {project.techStack?.map((item) => {
+                  {project.techstack?.map((item) => {
                     return (
-                      <span key={item} className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-white">{item}</span>
+                      <span key={item._id} className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-background">
+                        <Image src={urlFor(item.icon).width(14).url()} width={14} height={14} alt={item.name}/>{item.name}</span>
                     )
                   })}
                 </div>

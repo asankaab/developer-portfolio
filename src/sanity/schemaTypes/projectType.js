@@ -1,9 +1,11 @@
+import { FolderOpen } from 'lucide-react'
 import {defineField, defineType} from 'sanity'
 
 export const projectType = defineType({
   name: 'projects',
   title: 'Projects',
   type: 'document',
+  icon: FolderOpen,
   groups: [
     { name: 'content' }
   ],
@@ -58,30 +60,16 @@ export const projectType = defineType({
       group: 'content',
     }),
     defineField({
-      name: 'techStack',
-      title: 'Tech Stack',
+      name: 'techstack',
       type: 'array',
-      group: 'content',
       of: [
-        { type: 'string' }
+        defineField({
+          name: 'techfield',
+          type: 'reference',
+          to: [{type: 'technology'}]
+        })
       ],
-      options: {
-        layout: 'grid',
-        list: [
-          { title: 'Next.JS', value: 'nextjs' },
-          { title: 'Sanity', value: 'sanity' },
-          { title: 'Strapi', value: 'strapi' },
-          { title: 'Contentful', value: 'contentful' },
-          { title: 'Angular', value: 'angular' },
-          { title: 'Tailwind', value: 'tailwind' },
-          { title: 'PostCSS', value: 'postcss' },
-          { title: 'SCSS', value: 'scss' },
-          { title: 'React', value: 'react' },
-          { title: 'Node.JS', value: 'nodejs' },
-          { title: 'GraphQL', value: 'graphql' },
-          { title: 'TypeScript', value: 'typescript' }
-        ]
-      }
-    }),
+      options: { layout: 'tags' }
+    })
   ],
 })

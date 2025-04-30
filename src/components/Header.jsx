@@ -8,7 +8,6 @@ import { NavList } from "./NavList";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion"
-import Spacer from "./Spacer";
 
 export default function Header() {
 
@@ -63,7 +62,7 @@ export default function Header() {
     }
 
     return (
-        <div className={"bg-background fixed w-full z-50 transition-all duration-500" + nav}>
+        <div className={"bg-background sticky w-full z-50 transition-all duration-500" + nav}>
             <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="container mx-auto py-6 flex justify-between items-center px-3 border-b md:border-b-0">
                 <div variants={child} >
                     <Menu onClick={menuTrigger} className={ menuopen ? " hidden" : "" +"cursor-pointer md:hidden"}/>
@@ -83,8 +82,7 @@ export default function Header() {
                 </motion.div>
             </motion.div>
             <nav className={"md:hidden w-full min-h-svh bg-background transition-all duration-700 absolute -z-10" + " " + toggle}>
-                <Spacer/>
-                <div className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3">
+                <div className="flex flex-col md:flex-row divide-y md:divide-y-0 container mx-auto px-3 pt-20">
                     <NavList onClick={menuTrigger} className="text-foreground hover:text-black py-3" />
                 </div>
             </nav>
