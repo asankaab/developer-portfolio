@@ -1,15 +1,14 @@
 "use client"
 
-import { faDribbble, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CircleX, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavList } from "./NavList";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion"
+import './fontawesome.css'
 
-export default function Header() {
+export default function Header({socialLinks}) {
 
     const pathname = usePathname()
 
@@ -57,8 +56,8 @@ export default function Header() {
       }
       
     const child = {
-    visible: { opacity: 1, transition: { duration: 0.2, type: "tween" } },
-    hidden: { opacity: 0, },
+        visible: { opacity: 1, transition: { duration: 0.2, type: "tween" } },
+        hidden: { opacity: 0, },
     }
 
     return (
@@ -76,8 +75,13 @@ export default function Header() {
                 <motion.div variants={parent} viewport={{once: true}} initial="hidden" whileInView="visible" className="flex gap-10 items-center">
                     <motion.p variants={child} className=" text-nowrap text-xs">Based in Matara, Sri Lanka</motion.p>
                     <motion.div variants={child} className="flex gap-4">
-                        <Link aria-label="instagram link" href="https://www.instagram.com/asanka_abew" target="_blank"><FontAwesomeIcon className="hover:scale-110 hover:rotate-12 transition" icon={faInstagram}/></Link>
-                        <Link aria-label="instagram link" href="https://dribbble.com/asanka_abew" target="_blank"><FontAwesomeIcon className="hover:scale-125 hover:rotate-12 transition" icon={faDribbble}/></Link>                        
+                        {socialLinks?.map((link) => {
+                            return (
+                                <Link key={link._key} aria-label={link.name} href={link.url} target="_blank">
+                                    <i className={`fa-brands fa-${link.name} block hover:scale-125 hover:rotate-12 transition`}></i>
+                                </Link>
+                            )
+                        })}                     
                     </motion.div>
                 </motion.div>
             </motion.div>

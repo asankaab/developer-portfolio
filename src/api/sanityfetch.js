@@ -11,6 +11,17 @@ export async function getUser() {
     return user;
 }
 
+export async function getSocialLinks() {
+
+    const query = `*[_type == "user"]{socialmedia}[0]`;
+
+    const options = { next: { revalidate: 60 } };
+
+    const socialLinks = await client.fetch(query, {}, options ).then((data) => data);
+
+    return socialLinks;
+}
+
 export async function getProjectList(limit) {
 
     const query = `*[_type == "projects"]{title, slug, images, date, _id}[0...${limit || 20}]`;
