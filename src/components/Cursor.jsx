@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import "./cursor.css"
 
 const Cursor = () => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -39,20 +40,11 @@ const Cursor = () => {
 
     return (
         <motion.div
-            className="custom-cursor"
+            className="cursor"
             style={{
                 display: display,
-                position: 'fixed',
-                top: 0,
-                left: 0,
                 width: cursorSize,
                 height: cursorSize,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, blue, green)',
-                border: '2px solid rose',
-                pointerEvents: 'none',
-                zIndex: 9999,
-                mixBlendMode: 'screen'
             }}
             animate={{
                 x: cursorPosition.x - parseInt(cursorSize) / 2,

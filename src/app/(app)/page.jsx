@@ -8,7 +8,7 @@ import { getExperiences, getProjectList, getSkills, getTestimonials, getUser } f
 import { urlFor } from "@/sanity/lib/image";
 import * as motion from "framer-motion/client"
 import { child, list, parent, viewPortVal } from "./animation";
-import { ArrowDown, Dot } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Dot } from "lucide-react";
 import { PortableText } from "next-sanity";
 import { dataView } from "@/components/PortableComponents";
 import Image from "next/image";
@@ -60,11 +60,11 @@ export default async function Home() {
             {skills?.map((item) => {
                 return (
                     <motion.div variants={child} key={item._id} className="col-span-2 col-start-2 pb-4">
-                      <h4 className="text-lg font-bold uppercase">{item.title}</h4>
+                      <h4 className="text-lg font-bold uppercase flex gap-2 items-center"><ArrowRight color="grey" size={12}/>{item.title}</h4>
                       <div className="text-foregroundLight">
                           <PortableText value={item.details} components={dataView} />
                       </div>
-                      <div className="flex gap-6">
+                      <div className="flex gap-6 py-2">
                         {item.techstack?.map((item) => {
                           return (
                               <Image key={item._id} src={urlFor(item.icon).width(32).url()} width={32} height={32} alt={item.name}/>
@@ -82,7 +82,7 @@ export default async function Home() {
             {experiences?.map((item) => {
                 return (
                     <motion.div variants={child} key={item._id} className="col-span-2 col-start-2 pb-4 text-foreground">
-                      <h4 className="text-lg font-bold uppercase">{item.title}</h4>
+                      <h4 className="text-lg font-bold uppercase flex gap-2 items-center"><ArrowUpRight color="grey" size={12}/>{item.title}</h4>
                       <span className="border rounded-full bg-black/5 px-2 py-1 text-xs inline-block my-1"> &mdash; Since {item.yearStart}  {item.yearEnd ? " to " + item.yearEnd : null }&nbsp;</span>
                       <div className="text-foregroundLight">
                           <p>{item.details}</p>

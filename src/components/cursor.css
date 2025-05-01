@@ -1,0 +1,17 @@
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, blue, green);
+    border: 2px solid rebeccapurple;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;
+}
+
+@media (max-width: 768px) {
+    .cursor {
+        display: none;
+    }
+}

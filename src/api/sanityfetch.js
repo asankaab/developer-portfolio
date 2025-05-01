@@ -2,7 +2,18 @@ import { client } from "@/sanity/lib/client";
 
 export async function getUser() {
 
-    const query = `*[_type == "user"]{name, photo, occupation, slogan, email, description}[0]`;
+    const query = `*[_type == "user"]{name, photo, occupation, slogan, email, about }[0]`;
+
+    const options = { next: { revalidate: 60 } };
+
+    const user = await client.fetch(query, {}, options ).then((data) => data);
+
+    return user;
+}
+
+export async function getUserContact() {
+
+    const query = `*[_type == "user"]{name, photo, occupation, email, socialmedia, phone, contactnarrate }[0]`;
 
     const options = { next: { revalidate: 60 } };
 

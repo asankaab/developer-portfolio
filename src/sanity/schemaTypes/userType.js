@@ -33,7 +33,7 @@ export const userType = defineType({
 
     // group about
     defineField({
-      name: 'description',
+      name: 'about',
       type: 'array',
       group: 'about',
       of: [
@@ -45,6 +45,14 @@ export const userType = defineType({
     }),
 
     // group contact
+    
+    defineField({
+      name: 'contactnarrate',
+      title: 'Contact Narrate',
+      type: 'text',
+      group: 'contact',
+      validation: rule => rule.max(500)
+    }),
     defineField({
       name: 'email',
       type: 'string',
@@ -53,8 +61,9 @@ export const userType = defineType({
     }),
     defineField({
       name: 'phone',
-      type: 'number',
+      type: 'string',
       group: 'contact',
+      validation: rule => rule.regex(/^[0-9]+$/).warning('number only')
     }),
     defineField({
       name: 'socialmedia',
