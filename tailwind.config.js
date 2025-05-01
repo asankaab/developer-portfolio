@@ -11,6 +11,8 @@ module.exports = {
   		colors: {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
+			foregroundLight: 'var(--foreground-light)',
+			foregroundDark: 'var(--foreground-dark)',
 			grayshade: 'var(--grayshade)'
   		},
   		borderRadius: {

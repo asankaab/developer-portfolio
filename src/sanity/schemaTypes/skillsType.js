@@ -20,6 +20,18 @@ export const skillsType = defineType({
           type: 'block'
         })
       ]
-    })
+    }),
+    defineField({
+          name: 'techstack',
+          type: 'array',
+          of: [
+            defineField({
+              name: 'techfield',
+              type: 'reference',
+              to: [{type: 'technology'}]
+            })
+          ],
+          options: { layout: 'tags' }
+        })
   ]
 })

@@ -4,15 +4,19 @@
 
 :root {
   --background: #fff;
-  --foreground: #202020;
-  --grayshade: #f6f6f6;
+  --foreground: #141414;
+  --foreground-light: #515151;
+  --foreground-dark: #343434;
+  --grayshade: #fafafa;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #101010;
+    --background: #141414;
     --foreground: #d6d6d6;
-    --grayshade: #151515;
+    --foreground-light: #9c9c9c;
+    --foreground-dark: #888888;
+    --grayshade: #181818;
   }
 }
 

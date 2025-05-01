@@ -54,6 +54,5 @@ export const dataView = {
     // Ex. 1: customizing common block types
     h1: ({children}) => <h1 className="text-2xl">{children}</h1>,
     blockquote: ({children}) => <blockquote className="border-l-purple-500">{children}</blockquote>,
-    p: ({children}) => <p className="text-green-700">{children}</p>,
   }
 }

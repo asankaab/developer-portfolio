@@ -17,3 +17,18 @@ export const childCard = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } },
   hidden: { opacity: 0, scale: 0.95 },
   }
+
+
+  
+   export const list = {
+      visible: { opacity: 1, transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }, },
+      hidden: { opacity: 0 },
+    }
+    
+   export const item = {
+      visible: { opacity: 1, y: 0 },
+      hidden: { opacity: 0, y: 20 , transition: { duration: 2, type: "tween" }},
+    }
