@@ -6,7 +6,7 @@ import Link from 'next/link'
  
 export default function Loading() {
   return (
-    <div className="container w-full mx-auto px-3">
+    <div className="container w-full mx-auto px-3 -mt-20">
       <div className="flex justify-center items-center min-h-dvh">
         <div className="loader"></div>
       </div>

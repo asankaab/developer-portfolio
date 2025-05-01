@@ -48,8 +48,8 @@ export default async function Page({params}) {
               <div className="pb-4">
                 <h4 className="pb-1 font-bold text-foreground inline-flex items-center gap-2"><AppWindow size={12}/>Links</h4>
                 <div className="flex gap-2 flex-wrap">
-                  <a href={project.preview} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-foreground hover:bg-neutral-600 text-background hover:text-white transition font-bold">Preview <ExternalLink size={14}/></a>
-                  <a href={project.source} target="blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-background hover:bg-neutral-600 hover:text-white transition font-bold">Source <FolderCode size={14}/></a>
+                  <a href={project.preview} target="_blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-foreground hover:bg-neutral-600 text-background hover:text-white transition font-bold">Preview <ExternalLink size={14}/></a>
+                  <a href={project.source} target="_blank" className="border px-2 py-1 rounded inline-flex items-center gap-2 bg-background hover:bg-neutral-600 hover:text-white transition font-bold">Source <FolderCode size={14}/></a>
                 </div>
               </div>
               <div className="pb-4">
