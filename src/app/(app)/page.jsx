@@ -67,7 +67,7 @@ export default async function Home() {
                       <div className="flex gap-6 py-2">
                         {item.techstack?.map((item) => {
                           return (
-                              <Image key={item._id} src={urlFor(item.icon).width(32).url()} width={32} height={32} alt={item.name}/>
+                              <Image key={item._id} className="drop-shadow-[2px_2px_5px_rgba(255,255,255,0.2)]" src={urlFor(item.icon).width(32).url()} width={32} height={32} alt={item.name}/>
                           )
                         })}
                       </div>

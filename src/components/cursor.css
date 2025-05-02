@@ -3,8 +3,8 @@
     top: 0;
     left: 0;
     border-radius: 50%;
-    background: linear-gradient(135deg, blue, green);
-    border: 2px solid rebeccapurple;
+    background: linear-gradient(135deg, rgb(0, 81, 255), rgb(0, 223, 0));
+    border: 2px solid rgb(135, 42, 212);
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: screen;
@@ -14,5 +14,12 @@
     .cursor {
         opacity: 0;
         z-index: -9999;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .cursor {
+        mix-blend-mode: color-dodge;
+        opacity: 0.2;
     }
 }
