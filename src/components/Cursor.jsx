@@ -7,7 +7,7 @@ import "./cursor.css"
 const Cursor = () => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const [display, setDisplay] = useState('none');
-    const [cursorSize, setCursorSize] = useState('150px');
+    const [hoverClass, setHoverClass] = useState('');
 
     useEffect(() => {
         setDisplay('block');
@@ -16,39 +16,48 @@ const Cursor = () => {
         };
 
         const handleMouseEnterLink = () => {
-            setCursorSize('40px');
+            setHoverClass('cursor-hover-link');
         };
 
-        const handleMouseLeaveLink = () => {
-            setCursorSize('150px');
+        const handleMouseEnterEl = () => {
+            setHoverClass('cursor-hover');
+        };
+
+        const handleMouseLeave = () => {
+            setHoverClass('');
         };
 
         window.addEventListener('mousemove', handleMouseMove);
+
+        document.querySelectorAll('.cursor-hover-el').forEach((el) => {
+            el.addEventListener('mouseenter', handleMouseEnterEl);
+            el.addEventListener('mouseleave', handleMouseLeave);
+        });
+
         document.querySelectorAll('a').forEach((link) => {
             link.addEventListener('mouseenter', handleMouseEnterLink);
-            link.addEventListener('mouseleave', handleMouseLeaveLink);
+            link.addEventListener('mouseleave', handleMouseLeave);
         });
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             document.querySelectorAll('a').forEach((link) => {
                 link.removeEventListener('mouseenter', handleMouseEnterLink);
-                link.removeEventListener('mouseleave', handleMouseLeaveLink);
+                link.removeEventListener('mouseleave', handleMouseLeave);
             });
         };
     }, []);
 
     return (
+        <>
         <motion.div
-            className="cursor"
+            className={`cursor ${hoverClass}`} 
             style={{
                 display: display,
-                width: cursorSize,
-                height: cursorSize,
             }}
             animate={{
-                x: cursorPosition.x - parseInt(cursorSize) / 2,
-                y: cursorPosition.y - parseInt(cursorSize) / 2,
+                x: cursorPosition.x - 60/2,
+                y: cursorPosition.y - 60/2,
             }}
             transition={{
                 type: 'spring',
@@ -56,6 +65,22 @@ const Cursor = () => {
                 damping: 30,
             }}
         />
+        <motion.div
+            className={`cursor-center`} 
+            style={{
+                display: display,
+            }}
+            animate={{
+                x: cursorPosition.x - 20/2,
+                y: cursorPosition.y - 20/2,
+            }}
+            transition={{
+                type: 'spring',
+                stiffness: 250,
+                damping: 30,
+            }}
+        />
+        </>
     );
 };
 

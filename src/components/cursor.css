@@ -2,16 +2,52 @@
     position: fixed;
     top: 0;
     left: 0;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgb(0, 81, 255), rgb(0, 223, 0));
-    border: 2px solid rgb(135, 42, 212);
+    border: 2px solid var(--foreground-light);
     pointer-events: none;
     z-index: 9999;
+    opacity: .5;
+}
+
+.cursor-hover-el {
+    cursor: default;
+}
+
+.cursor-hover {
+    background: linear-gradient(135deg, rgb(0, 81, 255), rgb(0, 223, 0));
+    border: 2px solid var(--background);
     mix-blend-mode: screen;
+    width: 160px;
+    height: 160px;
+    opacity: .9;
+}
+
+.cursor-hover-link {
+    background: var(--foreground-light);;
+    mix-blend-mode: screen;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    opacity: .4;
+}
+
+.cursor-center {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--foreground);;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: .1;
 }
 
 @media (max-width: 768px) {
-    .cursor {
+    .cursor, .cursor-hover, .cursor-hover-link, .cursor-center {
         opacity: 0;
         z-index: -9999;
     }

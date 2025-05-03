@@ -33,7 +33,7 @@ export default async function Home() {
             </Avatar>
           </div>
           <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="grid gap-2">
-            <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase font-medium">{user.name}</motion.h1>
+            <motion.h1 variants={child} className="text-4xl md:text-7xl lg:text-9xl uppercase font-medium cursor-hover-el">{user.name}</motion.h1>
             <motion.h2 variants={child} className="text-xl md:text-4xl">{user.occupation}</motion.h2>
             <motion.p variants={child} className="text-xs text-foregroundDark md:text-lg">{user.slogan}</motion.p>
             <motion.div variants={child} className="flex gap-2">
@@ -131,7 +131,7 @@ export default async function Home() {
     </div>
     <motion.div variants={parent} viewport={viewPortVal} initial="hidden" whileInView="visible" className="container w-full mx-auto px-3">
       <motion.div variants={child} className="min-h-80 flex flex-col justify-center items-center">
-          <h1 className="text-5xl pb-4">Let&apos;s discuss!</h1>
+          <h1 className="text-5xl text-center pb-4">Let&apos;s discuss!</h1>
           <Link href="/contact"><Button>Contact</Button></Link>
       </motion.div>
     </motion.div>
