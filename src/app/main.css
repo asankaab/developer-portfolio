@@ -1,37 +1,67 @@
-@config '../../tailwind.config.js';
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@plugin 'tailwindcss-animate';
 
-:root {
-  --background: #fff;
-  --foreground: #141414;
-  --foreground-light: #515151;
-  --foreground-dark: #343434;
-  --grayshade: #fafafa;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-light: var(--foreground-light);
+  --color-foreground-dark: var(--foreground-dark);
+  --color-grayshade: var(--grayshade);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #141414;
-    --foreground: #d6d6d6;
-    --foreground-light: #9c9c9c;
-    --foreground-dark: #888888;
-    --grayshade: #181818;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-size: 0.9rem;
+@utility text-balance {
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 @layer utilities {
-  .text-balance {
-    overflow-wrap: break-word;
-    text-wrap: balance;
+  :root {
+    --background: #fff;
+    --foreground: #141414;
+    --foreground-light: #515151;
+    --foreground-dark: #343434;
+    --grayshade: #fafafa;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #141414;
+      --foreground: #d6d6d6;
+      --foreground-light: #9c9c9c;
+      --foreground-dark: #888888;
+      --grayshade: #181818;
+    }
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-size: 0.9rem;
   }
 }
 
