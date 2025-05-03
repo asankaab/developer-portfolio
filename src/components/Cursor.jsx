@@ -5,13 +5,16 @@ import { motion } from 'framer-motion';
 import "./cursor.css"
 
 const Cursor = () => {
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-    const [display, setDisplay] = useState('none');
+    const [cursorPosition, setCursorPosition] = useState({ x: -1000, y: -1000 });
+    const [display, setDisplay] = useState('0');
     const [hoverClass, setHoverClass] = useState('');
 
     useEffect(() => {
-        setDisplay('block');
+        setDisplay('0.5');
         const handleMouseMove = (e) => {
+            if (e.view.innerWidth < 768) {
+                setDisplay('none')
+            }
             setCursorPosition({ x: e.clientX, y: e.clientY });
         };
 

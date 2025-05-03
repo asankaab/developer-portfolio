@@ -8,7 +8,6 @@
     border: 2px solid var(--foreground-light);
     pointer-events: none;
     z-index: 9999;
-    opacity: .5;
 }
 
 .cursor-hover-el {
@@ -19,8 +18,8 @@
     background: linear-gradient(135deg, rgb(0, 81, 255), rgb(0, 223, 0));
     border: 2px solid var(--background);
     mix-blend-mode: screen;
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     opacity: .9;
 }
 
@@ -49,13 +48,13 @@
 @media (max-width: 768px) {
     .cursor, .cursor-hover, .cursor-hover-link, .cursor-center {
         opacity: 0;
-        z-index: -9999;
+        z-index: -99999;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     .cursor {
-        mix-blend-mode: color-dodge;
+        mix-blend-mode:hard-light;
         opacity: 0.2;
     }
 }
