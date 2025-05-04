@@ -80,7 +80,7 @@ export async function getExperiences() {
 
 export async function getSkills() {
 
-    const query = `*[_type == "skills"]{title, details, _id, "techstack": techstack[]-> }`;
+    const query = `*[_type == "skills"] | order(_updatedAt desc){title, details, _id, "techstack": techstack[]-> }`;
 
     const options = { next: { revalidate: 60 } };
 
