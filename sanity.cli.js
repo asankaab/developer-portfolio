@@ -8,8 +8,8 @@ import { defineCliConfig } from 'sanity/cli'
 
 export default defineCliConfig({
   api: {
-    projectId: projectId,
-    dataset: dataset
+    projectId: 'm74nhq4q',
+    dataset: 'production'
   },
   studioHost: 'asanka',
   project: {
