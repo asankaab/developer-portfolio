@@ -28,4 +28,6 @@ jobs:
             - name: Deploy to Sanity
               env:
                 SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+                SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+                SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
               run: npx sanity deploy --no-ci
