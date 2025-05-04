@@ -23,11 +23,9 @@ jobs:
               run: npm install
 
             - name: Build Sanity Studio
-              run: npm run build
+              run: npx sanity build
 
             - name: Deploy to Sanity
               env:
                 SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-                NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
-                NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
               run: npx sanity deploy --no-ci
