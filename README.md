@@ -2,6 +2,38 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+This is a free template and you can use as your own portfolio website.
+
+![asanka.one](screens/Artboard%201.png "preview")
+[Preview ->](https://asanker.vercel.app)
+
+### How to use this template?
+
+#### Requirements:
+- [Github](https://github.com) account
+- [sanity](https://sanity.io) account.
+- [vercel](https://vercel.com) account.
+
+#### Steps:
+1. Create sanity project
+2. Fork this repository
+3. Add repository environment variables
+    - NEXT_PUBLIC_SANITY_PROJECT_ID (your sanity project Id)
+    - SANITY_STUDIO_PROJECT_ID (your sanity project Id)
+    - NEXT_PUBLIC_SANITY_DATASET (default is "production")
+    - SANITY_STUDIO_DATASET (default is "production")
+    - SANITY_AUTH_TOKEN (Generate it at sanity project > API > Tokens (choose "Deploy Studio" option))
+* (make sure to add this all 5 variables even if they are duplicates.)
+4. Go to [Vercel Platform](https://vercel.com/new?) and create new project using this repository and add these environment varialbles in the vercel project.
+    - NEXT_PUBLIC_SANITY_PROJECT_ID (your sanity project Id)
+    - NEXT_PUBLIC_SANITY_DATASET (default is "production")
+5. Go to Your forked repository actions and run 'Deploy sanity studio' action.
+6. Wait for building your sanity studio and you are done.
+7. Your sanity dashboard available at your website's /studio path. ([yourprojectname].vercel.app/studio)
+
+
+## Local Development
+
 First, run the development server:
 
 ```bash
