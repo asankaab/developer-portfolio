@@ -1,5 +1,6 @@
 import { Bricolage_Grotesque } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./main.css"
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           <body className={bricolageGrotesque.className + ' bg-background'}>
             {children}
             <Analytics/>
+            <SpeedInsights />
           </body>
     </html>
   );
