@@ -15,7 +15,4 @@ export default defineCliConfig({
   project: {
     basePath: '/'
   },
-  deployment: {
-    appId: 'nbttepor4nt2g0ax6pwa9lj4',
-  }
 });
