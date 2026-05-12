@@ -11,7 +11,7 @@ export default function Loading() {
         <div className="loader"></div>
       </div>
       <div className='fixed bottom-5 right-5'>
-        <Image src="./logo_contained.svg" width={40} height={40} alt='logo'/>
+        <Image src="/logo_contained.svg" width={40} height={40} alt='logo'/>
       </div>
     </div>
   )
