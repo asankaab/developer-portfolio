@@ -30,4 +30,4 @@ jobs:
                 SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
                 SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
                 SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
-              run: npx sanity deploy --url=asanka.sanity.studio && npx sanity deploy --url=https://asanker.vercel.app/studio
+              run: npx sanity deploy --url=asanka.sanity.studio && npx sanity deploy --url=https://asanker.vercel.app/studio --external --no-build
